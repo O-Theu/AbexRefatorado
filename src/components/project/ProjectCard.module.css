@@ -1,0 +1,79 @@
+.card_container {
+    min-width: 450px;
+    max-width: 450px;
+    min-height: 400px;
+    max-height: 500px;
+ 
+    background-color: #FFF;
+
+    margin-right: 1em;
+    padding: 1em;
+
+    border-radius: 8px;
+    border-top: 2px solid rgb(18, 173, 212);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card_container h2 {
+    color: #FFbb33;
+    padding: 0 .5em;
+    display: inline;
+    background-color: #222;
+}
+
+.description {
+    text-align: justify;
+    height: 100px;
+    overflow-y: scroll;
+    margin-top: .5em;
+}
+
+.courses_container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100px;
+    overflow-y: scroll;
+    margin-top: .5em;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.courses_item {
+    background-color: #7b7b7b;
+    color: #FFf;
+    font-size: 16px;
+    border-radius: 12px;
+    padding: .3em;
+    height: 30px;
+}
+
+.information_container {
+    display: flex;
+    margin-top: 1em;
+}
+
+.date_container {
+    width: 50%;
+}
+
+.date_container h3 {
+    font-size: 18px;
+}
+
+.date_container p {
+    font-size: 14px;
+}
+
+.vacancies_container {
+    width: 50%;
+    text-align: end;
+}
+
+.vacancies_container h3 {
+    font-size: 18px;
+}
+
+.vacancies_container p {
+    font-size: 14px;
+}

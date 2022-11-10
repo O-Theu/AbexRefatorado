@@ -14,9 +14,6 @@ function Navbar() {
                         alt="Logo da UnoChapecó"
                     />
                 </Link>
-                
-                <input className={styles.search} type="search" placeholder="Digite o que está procurando..."/>
-
                 <ul className={styles.list}>
                     <li className={styles.item}>
                         <Link to='/'>Início</Link>

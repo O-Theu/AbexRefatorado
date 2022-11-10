@@ -1,0 +1,10 @@
+.container_carrosel {
+    width: 900px;
+    overflow: hidden;
+    padding: 1em;
+}
+
+.inner {
+    display: flex;
+    cursor: grabbing;
+}

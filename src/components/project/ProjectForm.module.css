@@ -5,12 +5,33 @@
 }
 
 .container_right{
+    display: flex;
+    flex-direction: column;
     padding: .5em;
     border-left: 2px solid #7b7b7b ;
     width: 50%;
 }
 
 .container_left {
+    display: flex;
+    flex-direction: column;
     padding: .5em;
     width: 50%;
+}
+
+.container_right label {
+    color: #FFF;
+    margin-bottom: .6em;
+    font-weight: bold;
+}
+
+.select {
+    margin: 0 0 1em 0;
+    font-size: 14px;
+    color: #000;
+}
+
+.descricao {
+    padding: .5em;
+    height: 126px;
 }
