@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import NewProjects from './components/pages/NewProjects';
 import Projects from './components/pages/Projects';
+import Project from './components/project/Project';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
             <Route 
               path='/projetos' 
               element={<Projects />} 
+            />
+            <Route 
+              path='/projeto/:id' 
+              element={<Project />} 
             />
             <Route 
               path='/novoprojeto' 

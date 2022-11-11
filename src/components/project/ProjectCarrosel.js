@@ -9,7 +9,6 @@ export const Carrossel = ({ projects }) => {
     const [width, setWidth] = useState(0);
 
     useEffect(() => {
-        console.log(carrosel.current?.offsetWidth, carrosel.current?.scrollWidth)
         setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     });
 
@@ -26,10 +25,11 @@ export const Carrossel = ({ projects }) => {
                         dragConstraints={{ right: 0, left:-width}}
                     >
                     {
-                        projects.map((project) => { 
+                        projects.map((project) => {
                             return( 
                                 <ProjectCard
                                     key={project.id}
+                                    id={project.id}
                                     name={project.name}
                                     vacancies={project.vacancies}
                                     initial_date={project.initial_date}

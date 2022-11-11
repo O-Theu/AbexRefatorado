@@ -1,9 +1,13 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ProjectContext = createContext();
 
+
 export const ProjectProvider = ({ children }) => {
+    const navigate = useNavigate();
     const [courses, setCourses] = useState([])
+
     // GET cursos da api
     useEffect(() => {
         fetch("http://localhost:5000/courses", {
@@ -31,7 +35,7 @@ export const ProjectProvider = ({ children }) => {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data)
+                navigate("/projetos");
             })
             .catch((err) => console.log(err))
     }
