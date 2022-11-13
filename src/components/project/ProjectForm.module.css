@@ -35,3 +35,7 @@
     padding: .5em;
     height: 126px;
 }
+
+.form_edit button {
+    display: none;
+}

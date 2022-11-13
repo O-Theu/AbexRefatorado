@@ -5,9 +5,8 @@ import { useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../context/ProjectContext';
 import Loading from '../layout/Loading';
 
-function ProjectForm({projectData}) {
+function ProjectForm({projectData, customClass}) {
     
-    //console.log(projectData)
     const { courses, CreateProject } = useContext(ProjectContext);
     const [ removeLoading,  setRemoveLoading] = useState(false)
 
@@ -16,10 +15,14 @@ function ProjectForm({projectData}) {
     useEffect(() => {
         setTimeout(() => {
             setRemoveLoading(true)
-            
+            if(projectData.id){
+                setProject(projectData)
+            } else {
+                setProject({})
+            }
         }, 300)
       
-    })
+    }, [projectData])
    
     
 
@@ -41,7 +44,7 @@ function ProjectForm({projectData}) {
     return (
         <>
             {!removeLoading && <Loading />}
-            <form className={styles.form} onSubmit={submit}>
+            <form className={`${styles.form} ${styles[customClass]}`} onSubmit={submit}>
                 <div className={styles.container_left}>
                     <Input
                         type="text"

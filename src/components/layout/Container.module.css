@@ -1,5 +1,5 @@
 .container {
-    width: 1500px;
+    width: 1300px;
     max-width: 100%;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,11 @@
 }
 
 .start {
-    justify-content: flex-start;
+    justify-content: start;
+}
+
+.evenly {
+    justify-content: space-evenly;
 }
 
 .column {

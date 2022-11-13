@@ -27,6 +27,20 @@
       ],
       "schedule": "agenda",
       "id": 2
+    },
+    {
+      "name": "teste 123",
+      "vacancies": "151",
+      "initial_date": "2022-11-11",
+      "final_date": "2022-11-30",
+      "courses": [
+        {
+          "value": "todos_os_cursos",
+          "label": "Todos os cursos"
+        }
+      ],
+      "schedule": "agenda",
+      "id": 3
     }
   ],
   "courses": [

@@ -7,7 +7,9 @@
 }
 
 .loader {
+    color: #ffbb33;
     width: 50px;
+    font-size: 3em;
     animation: rotation 1.5s infinite linear;
 }
 
