@@ -1,5 +1,5 @@
 import styles from './Project.module.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import ProjectForm from './ProjectForm';
@@ -8,13 +8,14 @@ import { ProjectProvider } from '../context/ProjectContext';
 
 import { FiTrash } from 'react-icons/fi';
 import { BsPencil } from 'react-icons/bs';
-import { AiOutlineSave } from 'react-icons/ai';
 import { IoReturnUpBack } from 'react-icons/io5';
 
 function Project() {
+    const navigate = useNavigate();
     const { id }= useParams();
     const [ project, setProject ] = useState([])
-    
+
+    // Metodo para buscar os dados do projeto
     useEffect(() => {
             fetch((`http://localhost:5000/projects/${id}`), {
                 method: "GET",
@@ -43,6 +44,39 @@ function Project() {
         }
     }
 
+    // Metodo para atualizar os projetos
+    function updateProject(project) {
+        fetch((`http://localhost:5000/projects/${id}`), {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(project)     
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                setProject(data)
+                setToggleForm(!toggleForm)
+                setBtnText('Editar')
+            }) 
+            .catch((err) => console.log(err))
+    }
+
+    // Metodo para deletar os projetos
+    function deleteProject() {
+        fetch((`http://localhost:5000/projects/${id}`), {
+            method:'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                navigate("/projetos");
+            })
+            .catch((err) => console.log(err))
+    }
+
     return (
         <div>
            <ProjectProvider>
@@ -56,16 +90,10 @@ function Project() {
                         <button className={styles.btn_edit} onClick={btnForm}>{btnText}</button>
                     </li>
                     <li className={styles.item}>
-                        <div className={styles.icon_save}>
-                            <AiOutlineSave />
-                        </div>
-                        <button className={styles.btn_save} onClick={btnForm}>Salvar</button>
-                    </li>
-                    <li className={styles.item}>
                         <div className={styles.icon_delete}>
                             <FiTrash />
                         </div>
-                        <button className={styles.btn_delete} onClick={btnForm}>Deletar</button>
+                        <button className={styles.btn_delete} onClick={deleteProject}>Deletar</button>
                     </li>
                 </ul>
                 <div>
@@ -80,7 +108,8 @@ function Project() {
                             <h2>Editar projeto</h2>
                             <ProjectForm 
                                 projectData={project}
-                                customClass={'form_edit'}
+                                buttonText="Concluir edição"
+                                handleSubmit={updateProject}
                             />
                         </div>   
                     )}

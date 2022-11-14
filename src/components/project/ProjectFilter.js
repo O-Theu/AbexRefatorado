@@ -1,40 +1,41 @@
 import styles from './ProjectFilter.module.css';
 import Input from '../form/Input';
 import Select from 'react-select';
+import { useState } from 'react';
 
-function ProjectFilter() {
+function ProjectFilter({handleChange, handleChangeSelection}) {
     const status = [
+        {value: 'todos', label: 'Todos os projetos'},
         {value: 'novo', label: 'Projetos novos'},
         {value: 'andamento', label: 'Projetos em andamento'},
         {value: 'concluido', label: 'Projetos concluídos'}
     ]
+
+    const [valueField, setValueField] = useState('');
+
+    function searchField(e) {
+        handleChange(e.target.value)
+        setValueField(e.target.value)
+    }
+
+    function selectionField(item) {
+        handleChange('')
+        handleChangeSelection(item.value)
+        setValueField('')
+    }
 
     return(
         <div className={styles.filter_container}>
             <Input 
                 type="search"
                 placeholder="Buscar..."
+                handleOnChange={searchField}
+                value={valueField}
             />
             <Select
-                isMulti
-                options={status} 
-            />
-            <Input 
-                type="checkbox"
-            />
-            <Input 
-                type="checkbox"
-            />
-            <Input 
-                type="checkbox"
-            />
-            <Input 
-                text="Data inicial"
-                type="date"
-            />
-            <Input 
-                text="Data Final"
-                type="date"
+                options={status}
+                onChange={(item) => selectionField(item)}
+                defaultValue={status[0]}
             />
         </div>
     )

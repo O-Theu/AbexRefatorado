@@ -40,6 +40,8 @@ export const ProjectProvider = ({ children }) => {
             .catch((err) => console.log(err))
     }
 
+    //PATH project
+
     return(
         <ProjectContext.Provider value={{ courses, CreateProject}}>
             {children}

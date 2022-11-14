@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { ProjectProvider } from './components/context/ProjectContext';
 
 import Container from './components/layout/Container';
 import Footer from './components/layout/Footer';
@@ -28,7 +29,11 @@ function App() {
             />
             <Route 
               path='/novoprojeto' 
-              element={<NewProjects />} 
+              element={
+                <ProjectProvider>
+                  <NewProjects />
+                </ProjectProvider>
+              } 
             />
         </Routes>
       </Container>

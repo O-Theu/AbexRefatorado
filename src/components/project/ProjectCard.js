@@ -8,10 +8,10 @@ function ProjectCard({ id, name, vacancies, initial_date, final_date, courses}) 
 
     return (
         <div className={styles.card_container}>
-            <h2>teste</h2>
-
+            <h2>{name}</h2>
+            
             <div className={styles.description}>
-                {name}
+                
             </div>
 
             <div className={styles.courses_container}>

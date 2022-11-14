@@ -5,9 +5,9 @@ import { useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../context/ProjectContext';
 import Loading from '../layout/Loading';
 
-function ProjectForm({projectData, customClass}) {
+function ProjectForm({projectData , buttonText, handleSubmit}) {
     
-    const { courses, CreateProject } = useContext(ProjectContext);
+    const { courses } = useContext(ProjectContext);
     const [ removeLoading,  setRemoveLoading] = useState(false)
 
     const [project, setProject] = useState({})
@@ -15,7 +15,7 @@ function ProjectForm({projectData, customClass}) {
     useEffect(() => {
         setTimeout(() => {
             setRemoveLoading(true)
-            if(projectData.id){
+            if(projectData){
                 setProject(projectData)
             } else {
                 setProject({})
@@ -23,14 +23,10 @@ function ProjectForm({projectData, customClass}) {
         }, 300)
       
     }, [projectData])
-   
-    
 
-    
-
-    const submit = (e) => {
+    function submit(e) {
         e.preventDefault();
-        CreateProject(project)
+        handleSubmit(project)
     }
 
     function handleChange(e) {
@@ -44,7 +40,7 @@ function ProjectForm({projectData, customClass}) {
     return (
         <>
             {!removeLoading && <Loading />}
-            <form className={`${styles.form} ${styles[customClass]}`} onSubmit={submit}>
+            <form className={styles.form} onSubmit={submit}>
                 <div className={styles.container_left}>
                     <Input
                         type="text"
@@ -103,7 +99,9 @@ function ProjectForm({projectData, customClass}) {
                         required={true}
                         value={project.schedule ? project.schedule : ''}
                     />
-                    <button type='submit'>Enviar</button>
+                    <div className={styles.container_button}>
+                        <button type='submit'>{buttonText}</button>                        
+                    </div>
 
                     {/* atualizar para componente */}
                     {/* <label>Descrição do projeto</label>
