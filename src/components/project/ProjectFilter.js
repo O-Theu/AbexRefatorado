@@ -28,6 +28,7 @@ function ProjectFilter({handleChange, handleChangeSelection}) {
         <div className={styles.filter_container}>
             <Input 
                 type="search"
+                customStyle={styles.search}
                 placeholder="Buscar..."
                 handleOnChange={searchField}
                 value={valueField}

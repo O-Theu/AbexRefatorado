@@ -20,3 +20,9 @@
 .form_control::placeholder {
     color: #7b7b7b;
 }
+
+input[type=search]::placeholder {
+    width: 100%;
+    background: url("../../img/search.png") no-repeat;
+    background-position: right;
+}
